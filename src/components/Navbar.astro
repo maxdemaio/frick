@@ -1,16 +1,16 @@
 <nav class="frick-nav">
   <div></div>
   <div class="frick-nav__middle">
-    <a href="/frick/">
+    <a class="frick-nav_item0" href="/frick/">
       <img src="/frick/pepelaugh.png" alt="pepelaugh nav button" />
     </a>
     <div class="frick-nav__sep-container">
       <div class="frick-nav__sep"></div>
     </div>
-    <a href="/frick/hof">
+    <a class="frick-nav_item2" href="/frick/hof">
       <img src="/frick/kekw-1.png" alt="kekw nav button" />
     </a>
-    <a href="/frick/lore">
+    <a class="frick-nav_item3" href="/frick/lore">
       <img src="/frick/yojoel.png" alt="yojoel nav button" />
     </a>
   </div>
@@ -25,16 +25,31 @@
     padding: 8px;
   }
   .frick-nav__middle {
-    backdrop-filter: blur(60px);
+    background: rgba(51, 51, 51, 0.23);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 32px;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 0 0 1px rgba(0, 0, 0, 0.35);
+  }
+  .frick-nav_item0 {
+    position: relative;
+  }
+  .frick-nav_item0::after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    content: "";
+    bottom: -2px;
+    right: 50%;
   }
 
   .frick-nav__sep-container {

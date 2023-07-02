@@ -1,3 +1,16 @@
+---
+export interface Props {
+  header: string;
+}
+
+const { header } = Astro.props;
+---
+
 <div class="apple-modal">
-  <div class="apple-modal__header"></div>
+  <div class="apple-modal__header">
+    <h1>{header}</h1>
+  </div>
+  <slot />
 </div>
+
+<style></style>
