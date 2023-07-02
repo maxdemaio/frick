@@ -6,27 +6,35 @@ export interface Props {
 const { num } = Astro.props;
 ---
 
-<nav class="frick-nav">
-  <div></div>
-  <div class="frick-nav__middle">
-    <a class={num == 0 ? "frick-nav_item0" : ""} href="/frick/">
-      <img src="/frick/pepelaugh.png" alt="pepelaugh nav button" />
-    </a>
-    <div class="frick-nav__sep-container">
-      <div class="frick-nav__sep"></div>
+<div class="frick-nav-outer">
+  <nav class="frick-nav">
+    <div class="frick-nav__middle">
+      <a class={num == 0 ? "frick-nav_item0" : ""} href="/frick/">
+        <img width={50} src="/frick/pepelaugh.png" alt="pepelaugh nav button" />
+      </a>
+      <div class="frick-nav__sep-container">
+        <div class="frick-nav__sep"></div>
+      </div>
+      <a class={num == 1 ? "frick-nav_item1" : ""} href="/frick/hof">
+        <img width={49} src="/frick/kekw-1.png" alt="kekw nav button" />
+      </a>
+      <a class={num == 2 ? "frick-nav_item2" : ""} href="/frick/lore">
+        <img width={37} src="/frick/yojoel.png" alt="yojoel nav button" />
+      </a>
     </div>
-    <a class={num == 1 ? "frick-nav_item1" : ""} href="/frick/hof">
-      <img src="/frick/kekw-1.png" alt="kekw nav button" />
-    </a>
-    <a class={num == 2 ? "frick-nav_item2" : ""} href="/frick/lore">
-      <img src="/frick/yojoel.png" alt="yojoel nav button" />
-    </a>
-  </div>
-  <div></div>
-</nav>
+  </nav>
+</div>
 
 <style>
+  .frick-nav-outer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
   .frick-nav {
+    height: 76px;
+    width: 280px;
     display: flex;
     flex-direction: row;
     justify-content: center;

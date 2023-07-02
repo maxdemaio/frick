@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro." num={0}>
+<Layout title="frick" num={0}>
   <main class="frick-button-container">
     <button type="button" id="frick-button">
       <span class="frick-button-text">frick</span>
@@ -10,53 +10,11 @@ import Layout from "../layouts/Layout.astro";
     <!-- Filepath is set in index.js -->
     <audio id="frick-sound" src="/frick/fricks/alice.m4a"></audio>
     <div id="frick-spans-container">
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
-      <span class="frick-span">frick</span>
+      {
+        Array(47)
+          .fill("0")
+          .map(() => <span class="frick-span">frick</span>)
+      }
     </div>
   </main>
   <script>
@@ -87,6 +45,7 @@ import Layout from "../layouts/Layout.astro";
           // Generate random angle and distance from the center
           const angle = Math.random() * 2 * Math.PI;
           const distance = Math.floor(Math.random() * (1001 - 400) + 400); // Adjust the distance as needed
+          const angle2 = Math.floor(Math.random() * (361 - 270) + 270); // Adjust the angle as needed
 
           // Calculate the new position for the span
           const positiveNegativeX = Math.random() < 0.5 ? -1 : 1;
@@ -99,7 +58,7 @@ import Layout from "../layouts/Layout.astro";
             { opacity: "1", transform: "translate(0px, 0px) rotate(0deg)" },
             {
               opacity: "0",
-              transform: `translate(${x}px, ${y}px) rotate(360deg)`,
+              transform: `translate(${x}px, ${y}px) rotate(${angle2}deg)`,
             },
           ];
 

@@ -1,12 +1,14 @@
 ---
+import Modal from "../components/Modal.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro." num={2}>
+<Layout title="frick - lore" num={2}>
   <main>
-    <h2>Lore</h2>
-    <p>
-      There was a fricking frick, named Joel, who lived near Fricker street.
-    </p>
+    <Modal header="Lore">
+      <p>
+        There was a fricking frick, named Joel, who lived near Fricker street.
+      </p>
+    </Modal>
   </main>
 </Layout>
