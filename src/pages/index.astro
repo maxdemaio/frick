@@ -1,81 +1,162 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+  <main class="frick-button-container">
+    <button type="button" id="frick-button">
+      <span class="frick-button-text">frick</span>
+    </button>
+    <!-- Filepath is set in index.js -->
+    <audio id="frick-sound" src=""></audio>
+    <div id="frick-spans-container">
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+      <span class="frick-span">frick</span>
+    </div>
+  </main>
+  <script>
+    /**
+     * An array of valid filepath names to audio files.
+     * @type {string[]}
+     */
+    const validFrickSoundFilepaths = Object.freeze([
+      "./fricks/sam.mp3",
+      "./fricks/alice.m4a",
+    ]);
+
+    document
+      .getElementById("frick-button")
+      .addEventListener("click", function () {
+        const spans = document.getElementsByClassName("frick-span");
+        const audio = document.getElementById("frick-sound");
+        const index = Math.floor(
+          Math.random() * validFrickSoundFilepaths.length
+        );
+        audio.src = validFrickSoundFilepaths[index];
+        audio.play();
+
+        // Scatter each span
+        for (let i = 0; i < spans.length; i++) {
+          const span = spans[i];
+
+          // Generate random angle and distance from the center
+          const angle = Math.random() * 2 * Math.PI;
+          const distance = Math.floor(Math.random() * (1001 - 400) + 400); // Adjust the distance as needed
+
+          // Calculate the new position for the span
+          const positiveNegativeX = Math.random() < 0.5 ? -1 : 1;
+          const positiveNegativeY = Math.random() < 0.5 ? -1 : 1;
+          const x = Math.cos(angle) * distance * positiveNegativeX; // Shoot left or right randomly
+          const y = Math.sin(angle) * distance * positiveNegativeY;
+
+          const spanKeyFrames = [
+            /* Start full opacity */
+            { opacity: "1", transform: "translate(0px, 0px) rotate(0deg)" },
+            {
+              opacity: "0",
+              transform: `translate(${x}px, ${y}px) rotate(360deg)`,
+            },
+          ];
+
+          const spanTiming = {
+            duration: 1000,
+            direction: "normal",
+          };
+
+          span.animate(spanKeyFrames, spanTiming);
+        }
+      });
+  </script>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  .frick-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #frick-button {
+    padding: 20px 80px;
+    border-radius: 24px;
+    background-color: white;
+    border: none;
+    box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease-in-out;
+  }
+  #frick-button:hover {
+    background-color: rgb(225, 225, 225);
+    cursor: pointer;
+  }
+  .frick-button-text {
+    font-size: 22vw;
+    /* Set the background color */
+    background: linear-gradient(to bottom, #c57eff 0%, #0a0d20 100%);
+    /* Mask the color to the text, and remove the rest  */
+    -webkit-background-clip: text;
+    background-clip: text;
+    /* Make the text fill color value transparent so the masked background color comes through */
+    -webkit-text-fill-color: transparent;
+  }
+
+  #frick-spans-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 300px;
+  }
+  .frick-span {
+    opacity: 0;
+    position: absolute;
+  }
 </style>
