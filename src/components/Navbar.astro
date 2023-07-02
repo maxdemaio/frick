@@ -1,21 +1,30 @@
+---
+export interface Props {
+  num: number;
+}
+
+const { num } = Astro.props;
+---
+
 <nav class="frick-nav">
   <div></div>
   <div class="frick-nav__middle">
-    <a class="frick-nav_item0" href="/frick/">
+    <a class={num == 0 ? "frick-nav_item0" : ""} href="/frick/">
       <img src="/frick/pepelaugh.png" alt="pepelaugh nav button" />
     </a>
     <div class="frick-nav__sep-container">
       <div class="frick-nav__sep"></div>
     </div>
-    <a class="frick-nav_item2" href="/frick/hof">
+    <a class={num == 1 ? "frick-nav_item1" : ""} href="/frick/hof">
       <img src="/frick/kekw-1.png" alt="kekw nav button" />
     </a>
-    <a class="frick-nav_item3" href="/frick/lore">
+    <a class={num == 2 ? "frick-nav_item2" : ""} href="/frick/lore">
       <img src="/frick/yojoel.png" alt="yojoel nav button" />
     </a>
   </div>
   <div></div>
 </nav>
+
 <style>
   .frick-nav {
     display: flex;
@@ -38,17 +47,21 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
       0 0 0 1px rgba(0, 0, 0, 0.35);
   }
-  .frick-nav_item0 {
+  .frick-nav_item0,
+  .frick-nav_item1,
+  .frick-nav_item2 {
     position: relative;
   }
-  .frick-nav_item0::after {
+  .frick-nav_item0::after,
+  .frick-nav_item1::after,
+  .frick-nav_item2::after {
     position: absolute;
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     content: "";
-    bottom: -2px;
+    bottom: -5px;
     right: 50%;
   }
 
