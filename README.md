@@ -1,6 +1,6 @@
 # frick
 
-Submit your fricks to the [frick folder](/fricks/) to join the hall of fame! :octocat:
+Submit your fricks to the [frick folder](/public/fricks/) to join the hall of fame! :octocat:
 
 ---
 
