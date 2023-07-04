@@ -23,20 +23,25 @@ import Layout from "../layouts/Layout.astro";
      * @type {string[]}
      */
     const validFrickSoundFilepaths = Object.freeze([
-      "/fricks/sam.mp3",
       "/fricks/alice.m4a",
+      "/fricks/sam.mp3",
       "/fricks/ian.mp3",
     ]);
+
+    /**
+     * @type {number}
+     */
+    let index = 0;
 
     document
       .getElementById("frick-button")
       .addEventListener("click", function () {
         const spans = document.getElementsByClassName("frick-span");
         const audio = document.getElementById("frick-sound");
-        const index = Math.floor(
-          Math.random() * validFrickSoundFilepaths.length
-        );
-        audio.src = validFrickSoundFilepaths[index];
+        if (index > validFrickSoundFilepaths.length - 1) {
+          index = 0;
+        }
+        audio.src = validFrickSoundFilepaths[index++];
         audio.play();
 
         // Scatter each span
