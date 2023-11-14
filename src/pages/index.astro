@@ -18,10 +18,6 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </main>
   <script>
-    /**
-     * An array of valid filepath names to audio files.
-     * @type {string[]}
-     */
     const validFrickSoundFilepaths = Object.freeze([
       "/fricks/alice.m4a",
       "/fricks/sam.mp3",
@@ -31,21 +27,22 @@ import Layout from "../layouts/Layout.astro";
       "/fricks/emzra.mp3"
     ]);
 
-    /**
-     * @type {number}
-     */
-    let index = 0;
+    let index: number = 0;
 
     document
       .getElementById("frick-button")!
       .addEventListener("click", function () {
-        const spans = document.getElementsByClassName("frick-span");
-        const audio = document.getElementById("frick-sound");
+        const spans: HTMLCollectionOf<Element> = document.getElementsByClassName("frick-span");
+        const audio: HTMLAudioElement | null = document.getElementById("frick-sound") as HTMLAudioElement;
         if (index > validFrickSoundFilepaths.length - 1) {
           index = 0;
         }
-        audio.src = validFrickSoundFilepaths[index++];
-        audio.play();
+
+        if (audio) {
+          audio.src = validFrickSoundFilepaths[index++];
+          audio.play();
+        }
+
 
         // Scatter each span
         for (let i = 0; i < spans.length; i++) {
@@ -71,7 +68,7 @@ import Layout from "../layouts/Layout.astro";
             },
           ];
 
-          const spanTiming = {
+          const spanTiming: KeyframeAnimationOptions = {
             duration: 1000,
             direction: "normal",
           };
