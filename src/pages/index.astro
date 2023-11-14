@@ -27,7 +27,8 @@ import Layout from "../layouts/Layout.astro";
       "/fricks/sam.mp3",
       "/fricks/ian.mp3",
       "/fricks/hacksore.mp3",
-      "/fricks/aodhan.m4a"
+      "/fricks/aodhan.m4a",
+      "/fricks/emzra.mp3"
     ]);
 
     /**
@@ -36,7 +37,7 @@ import Layout from "../layouts/Layout.astro";
     let index = 0;
 
     document
-      .getElementById("frick-button")
+      .getElementById("frick-button")!
       .addEventListener("click", function () {
         const spans = document.getElementsByClassName("frick-span");
         const audio = document.getElementById("frick-sound");
