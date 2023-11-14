@@ -1,85 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 ---
-
-<Layout title="frick" num={0}>
-  <main class="frick-button-container">
-    <button type="button" id="frick-button">
-      <span class="frick-button-text">frick</span>
-    </button>
-    <!-- Filepath is set in index.js -->
-    <audio id="frick-sound" src="/fricks/alice.m4a"></audio>
-    <div id="frick-spans-container">
-      {
-        Array(47)
-          .fill("0")
-          .map(() => <span class="frick-span">frick</span>)
-      }
-    </div>
-  </main>
-  <script>
-    const validFrickSoundFilepaths = Object.freeze([
-      "/fricks/alice.m4a",
-      "/fricks/sam.mp3",
-      "/fricks/ian.mp3",
-      "/fricks/hacksore.mp3",
-      "/fricks/aodhan.m4a",
-      "/fricks/emzra.mp3",
-      "/fricks/pati.m4a"
-    ]);
-
-    let index: number = 0;
-
-    document
-      .getElementById("frick-button")!
-      .addEventListener("click", function () {
-        const spans: HTMLCollectionOf<Element> = document.getElementsByClassName("frick-span");
-        const audio: HTMLAudioElement | null = document.getElementById("frick-sound") as HTMLAudioElement;
-        if (index > validFrickSoundFilepaths.length - 1) {
-          index = 0;
-        }
-
-        if (audio) {
-          audio.src = validFrickSoundFilepaths[index++];
-          audio.play();
-        }
-
-
-        // Scatter each span
-        for (let i = 0; i < spans.length; i++) {
-          const span = spans[i];
-
-          // Generate random angle and distance from the center
-          const angle = Math.random() * 2 * Math.PI;
-          const distance = Math.floor(Math.random() * (1001 - 400) + 400); // Adjust the distance as needed
-          const angle2 = Math.floor(Math.random() * (361 - 270) + 270); // Adjust the angle as needed
-
-          // Calculate the new position for the span
-          const positiveNegativeX = Math.random() < 0.5 ? -1 : 1;
-          const positiveNegativeY = Math.random() < 0.5 ? -1 : 1;
-          const x = Math.cos(angle) * distance * positiveNegativeX; // Shoot left or right randomly
-          const y = Math.sin(angle) * distance * positiveNegativeY;
-
-          const spanKeyFrames = [
-            /* Start full opacity */
-            { opacity: "1", transform: "translate(0px, 0px) rotate(0deg)" },
-            {
-              opacity: "0",
-              transform: `translate(${x}px, ${y}px) rotate(${angle2}deg)`,
-            },
-          ];
-
-          const spanTiming: KeyframeAnimationOptions = {
-            duration: 1000,
-            direction: "normal",
-          };
-
-          span.animate(spanKeyFrames, spanTiming);
-        }
-      });
-  </script>
-</Layout>
-
 <style>
   .frick-button-container {
     display: flex;
@@ -130,3 +51,82 @@ import Layout from "../layouts/Layout.astro";
     position: absolute;
   }
 </style>
+
+<Layout title="frick" num={0}>
+  <main class="frick-button-container">
+    <button type="button" id="frick-button">
+      <span class="frick-button-text">frick</span>
+    </button>
+    <!-- Filepath is set in index.js -->
+    <audio id="frick-sound" src="/fricks/alice.m4a"></audio>
+    <div id="frick-spans-container">
+      {
+        Array(47)
+          .fill("0")
+          .map(() => <span class="frick-span">frick</span>)
+      }
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const validFrickSoundFilepaths = Object.freeze([
+    "/fricks/alice.m4a",
+    "/fricks/sam.mp3",
+    "/fricks/ian.mp3",
+    "/fricks/hacksore.mp3",
+    "/fricks/aodhan.m4a",
+    "/fricks/emzra.mp3",
+    "/fricks/pati.m4a"
+  ]);
+
+  let index: number = 0;
+
+  document
+    .getElementById("frick-button")!
+    .addEventListener("click", function () {
+      const spans: HTMLCollectionOf<Element> = document.getElementsByClassName("frick-span");
+      const audio: HTMLAudioElement | null = document.getElementById("frick-sound") as HTMLAudioElement;
+      if (index > validFrickSoundFilepaths.length - 1) {
+        index = 0;
+      }
+
+      if (audio) {
+        audio.src = validFrickSoundFilepaths[index++];
+        audio.play();
+      }
+
+
+      // Scatter each span
+      for (let i = 0; i < spans.length; i++) {
+        const span = spans[i];
+
+        // Generate random angle and distance from the center
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.floor(Math.random() * (1001 - 400) + 400); // Adjust the distance as needed
+        const angle2 = Math.floor(Math.random() * (361 - 270) + 270); // Adjust the angle as needed
+
+        // Calculate the new position for the span
+        const positiveNegativeX = Math.random() < 0.5 ? -1 : 1;
+        const positiveNegativeY = Math.random() < 0.5 ? -1 : 1;
+        const x = Math.cos(angle) * distance * positiveNegativeX; // Shoot left or right randomly
+        const y = Math.sin(angle) * distance * positiveNegativeY;
+
+        const spanKeyFrames = [
+          /* Start full opacity */
+          { opacity: "1", transform: "translate(0px, 0px) rotate(0deg)" },
+          {
+            opacity: "0",
+            transform: `translate(${x}px, ${y}px) rotate(${angle2}deg)`,
+          },
+        ];
+
+        const spanTiming: KeyframeAnimationOptions = {
+          duration: 1000,
+          direction: "normal",
+        };
+
+        span.animate(spanKeyFrames, spanTiming);
+      }
+    });
+</script>

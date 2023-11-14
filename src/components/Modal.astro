@@ -5,65 +5,6 @@ export interface Props {
 
 const { header } = Astro.props;
 ---
-
-<div class="apple-modal">
-  <div class="apple-modal__header">
-    <div class="traffic-lights focus">
-      <button class="traffic-light traffic-light-close" id="close">
-        <svg
-          width="7"
-          height="7"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke="#000"
-            stroke-width="1.2"
-            stroke-linecap="round"
-            d="M1.182 5.99L5.99 1.182M5.99 6.132L1.182 1.323"></path>
-        </svg></button
-      >
-      <button class="traffic-light traffic-light-minimize" id="minimize">
-        <svg
-          width="7"
-          height="2"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke="#000"
-            stroke-width="1.2"
-            stroke-linecap="round"
-            d="M.61.703h5.8"></path>
-        </svg></button
-      >
-      <button class="traffic-light traffic-light-maximize" id="maximize">
-        <svg
-          width="8"
-          height="7"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke="#000"
-            stroke-width="1.2"
-            stroke-linecap="round"
-            d="M1.1 3.4h5.8M3.9 6.4V.6"></path>
-        </svg>
-      </button>
-    </div>
-    <h1>{header}</h1>
-    <div></div>
-  </div>
-  <div class="apple-modal__content-sidebar">
-    <div class="sidebar"></div>
-    <div class="content">
-      <slot />
-    </div>
-  </div>
-  <div class="apple-modal__footer"></div>
-</div>
-
 <style>
   .apple-modal {
     margin: 40px 20px;
@@ -195,3 +136,61 @@ const { header } = Astro.props;
   }
   /* end traffic light logic */
 </style>
+
+<div class="apple-modal">
+  <div class="apple-modal__header">
+    <div class="traffic-lights focus">
+      <button class="traffic-light traffic-light-close" id="close">
+        <svg
+          width="7"
+          height="7"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke="#000"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            d="M1.182 5.99L5.99 1.182M5.99 6.132L1.182 1.323"></path>
+        </svg></button
+      >
+      <button class="traffic-light traffic-light-minimize" id="minimize">
+        <svg
+          width="7"
+          height="2"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke="#000"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            d="M.61.703h5.8"></path>
+        </svg></button
+      >
+      <button class="traffic-light traffic-light-maximize" id="maximize">
+        <svg
+          width="8"
+          height="7"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke="#000"
+            stroke-width="1.2"
+            stroke-linecap="round"
+            d="M1.1 3.4h5.8M3.9 6.4V.6"></path>
+        </svg>
+      </button>
+    </div>
+    <h1>{header}</h1>
+    <div></div>
+  </div>
+  <div class="apple-modal__content-sidebar">
+    <div class="sidebar"></div>
+    <div class="content">
+      <slot />
+    </div>
+  </div>
+  <div class="apple-modal__footer"></div>
+</div>
