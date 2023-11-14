@@ -35,32 +35,32 @@ const { title, num } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta property="og:image" content="/og-frick.png" />
+    <style is:global>
+      body {
+        margin: 0px;
+        background-color: #13216b;
+        background-image: url(/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+      }
+    
+      .content-sidebar {
+        display: flex;
+        flex-direction: column;
+      }
+    
+      .content-sidebar > *:nth-child(1) {
+        flex-grow: 0; /* take up as little space as possible */
+      }
+      .content-sidebar > *:nth-child(2) {
+        flex: 1; /* take up as much space as possible */
+      }
+    </style>
   </head>
   <body class="content-sidebar">
     <Navbar num={num} />
     <slot />
   </body>
 </html>
-<style is:global>
-  body {
-    margin: 0px;
-    background-color: #13216b;
-    background-image: url(/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-  }
-
-  .content-sidebar {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .content-sidebar > *:nth-child(1) {
-    flex-grow: 0; /* take up as little space as possible */
-  }
-  .content-sidebar > *:nth-child(2) {
-    flex: 1; /* take up as much space as possible */
-  }
-</style>
