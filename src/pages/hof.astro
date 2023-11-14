@@ -2,7 +2,11 @@
 import Modal from "../components/Modal.astro";
 import Layout from "../layouts/Layout.astro";
 ---
-
+<style>
+  .pr-para {
+    padding-left: 40px;
+  }
+</style>
 <Layout title="frick - hall of frick" num={1}>
   <main>
     <Modal header="Hall of Frick">
@@ -36,10 +40,13 @@ import Layout from "../layouts/Layout.astro";
           ></a
         >!
       </p>
+      <p class="pr-para">For submitting a PR on Github...</p>
       <ol>
+        <li>Fork the repo</li>
         <li>Add your frick to the "public/fricks" folder</li>
         <li>Add your frick to the "validFrickSoundFilepaths" variable in "index.astro"</li>
         <li>Put your name in the Hall of Fame file, "hof.astro"</li>
+        <li>Open a PR</li>
         <li>Profit</li>
       </ol>
       </div>
