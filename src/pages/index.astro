@@ -82,6 +82,10 @@ import Layout from "../layouts/Layout.astro";
 
   let index: number = 0;
 
+  const today = new Date();
+  const isAprilFools = today.getMonth() === 3 && today.getDate() === 1;
+  const frickText = isAprilFools ? 'frack' : 'frick';
+
   document
     .getElementById("frick-button")!
     .addEventListener("click", function () {
@@ -129,4 +133,9 @@ import Layout from "../layouts/Layout.astro";
         span.animate(spanKeyFrames, spanTiming);
       }
     });
+
+  // Replace all occurrences of "frick" with "frack" on April Fools' Day
+  if (isAprilFools) {
+    document.body.innerHTML = document.body.innerHTML.replace(/frick/g, 'frack');
+  }
 </script>

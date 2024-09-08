@@ -4,6 +4,10 @@ export interface Props {
 }
 
 const { num } = Astro.props;
+
+const today = new Date();
+const isAprilFools = today.getMonth() === 3 && today.getDate() === 1;
+const frickText = isAprilFools ? 'frack' : 'frick';
 ---
 <style>
   .frick-nav-outer {
