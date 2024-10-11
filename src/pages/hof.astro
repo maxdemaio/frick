@@ -60,3 +60,12 @@ import Layout from "../layouts/Layout.astro";
     </Modal>
   </main>
 </Layout>
+
+<script>
+  const today = new Date();
+  const isAprilFools = today.getMonth() === 3 && today.getDate() === 1;
+
+  if (isAprilFools) {
+    document.body.innerHTML = document.body.innerHTML.replace(/frick/g, 'frack');
+  }
+</script>
